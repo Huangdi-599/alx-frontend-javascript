@@ -1,4 +1,4 @@
-function getResponseFromAPI() {
+export default function getResponseFromAPI() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const response = {
@@ -13,5 +13,3 @@ function getResponseFromAPI() {
       }, 2000); 
     });
   }
-  
-  export default getResponseFromAPI;  
