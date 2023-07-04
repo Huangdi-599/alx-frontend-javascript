@@ -1,13 +1,13 @@
 export default function updateStudentGradeByCity(students, city, newGrades) {
-    // check arg is an array
-    if (Object.getPrototypeOf(students) !== Array.prototype) {
-      return [];
-    }
-    if (Object.getPrototypeOf(newGrades) !== Array.prototype) {
-      return [];
-    }
-    return students.filter((student) => student.location === city).map((student) => {
-      const [newGrade] = newGrades.filter((item) => item.studentId === student.id);
-      return { ...student, grade: newGrade ? newGrade.grade : 'N/A' };
+  return students
+    .filter((student) => student.location === city)
+    .map((student) => {
+      const foundGrade = newGrades.find((grade) => grade.studentId === student.id);
+      return {
+        id: student.id,
+        firstName: student.firstName,
+        location: student.location,
+        grade: foundGrade ? foundGrade.grade : 'N/A',
+      };
     });
-  }
+}
